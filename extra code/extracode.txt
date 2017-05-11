@@ -1,0 +1,40 @@
+        for action in negative_noop_actions_list:
+            add_action = True
+
+            for pre_condition in action.precond_pos:
+                if pre_condition not in positive_literals:
+                    add_action = False
+            for pre_condition in action.precond_neg:
+                if pre_condition not in negative_literals:
+                    add_action = False
+
+            if add_action:
+                pg_node_a = PgNode_a(action)
+                pre_s_nodes = pg_node_a.precond_s_nodes()
+                self.a_levels[level].add(pg_node_a)
+                for node in pre_s_nodes:
+                    for existing_node in existing_s_nodes:
+                        if node.__eq__(existing_node):
+                            existing_node.children.add(pg_node_a)
+                            pg_node_a.parents.add(existing_node)
+
+        for action in self.problem.actions_list:
+            add_action = True
+
+            for pre_condition in action.precond_pos:
+                if pre_condition not in positive_literals:
+                        add_action = False
+            for pre_condition in action.precond_neg:
+                if pre_condition not in negative_literals:
+                    add_action = False
+
+            if add_action:
+                #print(action.name)
+                pg_node_a = PgNode_a(action)
+                pre_s_nodes = pg_node_a.prenodes
+                self.a_levels[level].add(pg_node_a)
+                for node in pre_s_nodes:
+                    for existing_node in existing_s_nodes:
+                        if node.__eq__(existing_node):
+                            existing_node.children.add(pg_node_a)
+                            pg_node_a.parents.add(existing_node)
