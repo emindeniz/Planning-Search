@@ -1,8 +1,0 @@
-
-
-        for action in self.actions_list:
-            if goal_list:
-                for effect in action.effect_add:
-                    if effect in goal_list:
-                        count+=1
-                        goal_list.remove(effect)
