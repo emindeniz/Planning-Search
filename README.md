@@ -3,7 +3,7 @@
 
 # 
 
-My imlementations of the planning search is contained in files my_air_cargo_problems.py and my_planning_graph.py.
+My imlementations of the planning search is contained in the files my_air_cargo_problems.py and my_planning_graph.py.
 
 ## Synopsis
 
